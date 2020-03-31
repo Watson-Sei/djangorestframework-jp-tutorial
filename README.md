@@ -15,14 +15,14 @@
 
 何かをする前に、venv を使って新しい仮想環境を作成します。これにより、パッケージの設定が他のプロジェクトからうまく分離されていることを確認します。
 
-```
+```sh
  python3 -m venv env 
  source env/bin/activate
 ```
 
 これで仮想環境に入ったので、必要なパッケージをインストールすることができます。
 
-``` 
+```sh
  pip install django
  pip install djangorestframework 
  pip install pygments  # コードの強調表示に使用します
@@ -34,7 +34,7 @@
 
 さて、コーディングの準備が整いました。始めるために、新しいプロジェクトを作成して作業をしてみましょう。
 
-```
+```sh
  cd ~
  django-admin startproject tutorial
  cd tutorial
@@ -42,7 +42,7 @@
 
 これが終われば、シンプルなWeb APIを作成するために使用するアプリを作成することができます。
 
-```
+```sh
  python manage.py startapp snippets
 ```
 
@@ -62,7 +62,7 @@
 
 このチュートリアルでは、コードスニペットを保存するためのシンプルなスニペットモデルを作成することから始めます。snippets/models.pyファイルを編集してください。注意: プログラミングの良い習慣にはコメントが含まれています。このチュートリアルコードのリポジトリ版にもありますが、ここではコード自体に焦点を当てるためにコメントを省略しています。
 
-```
+```python
  from django.db import models
  from pygments.lexers import get_all_lexers
  from pygments.styles import get_all_styles
@@ -86,7 +86,7 @@
 
 また、スニペットモデルの初期マイグレーションを作成して、初めてデータベースを同期させる必要があります。
 
-```
+```sh
  python manage.py makemigrations snippets
  python manage.py migrate 
 ```
@@ -95,7 +95,7 @@
 
 Web API を始めるために最初に必要なことは、スニペットインスタンスをシリアライズして json のような表現にデシリアライズする方法を提供することです。これは、Django のフォームに非常に似た動作をするシリアライザを宣言することで実現できます。スニペットディレクトリに serializers.py という名前のファイルを作成し、以下を追加します。
 
-```
+```python
 from rest_framework import serializers
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
@@ -140,13 +140,13 @@ class SnippetSerializer(serializers.Serializer):
 
 先に進む前に、新しいシリアライザクラスの使い方を説明します。Django シェルに入ってみましょう。
 
-``` 
+```sh
  python manage.py shell 
 ```
 
 さて、いくつかのインポートができたら、作業するためのコードスニペットをいくつか作成してみましょう。
 
-``` 
+```python
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 from rest_framework.renderers import JSONRenderer
@@ -177,7 +177,7 @@ content
 
 デシリアライズも似たようなものです。最初にストリームをPythonネイティブのデータ型に解析します...
 
-```
+```python
 import io
 
 stream = io.BytesIO(content)
@@ -186,7 +186,7 @@ data = JSONParser().parse(stream)
 
 ...そして、それらのネイティブなデータ型を、完全に実装されたオブジェクトのインスタンスに復元します。
 
-```
+```python
 serializer = SnippetSerializer(data=data)
 serializer.is_valid()
 # True
@@ -200,7 +200,7 @@ APIがフォームの操作とどれだけ似ているかに注目してくだ�
 
 モデルインスタンスの代わりにクエリセットをシリアライズすることもできます。そのためにはシリアライザの引数に many=True フラグを追加するだけです。
 
-```
+```python
 serializer = SnippetSerializer(Snippet.objects.all(), many=True)
 serializer.data
 # [OrderedDict([('id', 1), ('title', ''), ('code', 'foo = "bar"\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 2), ('title', ''), ('code', 'print("hello, world")\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 3), ('title', ''), ('code', 'print("hello, world")'), ('linenos', False), ('language', 'python'), ('style', 'friendly')])]
@@ -213,7 +213,7 @@ Django が Form クラスと ModelForm クラスの両方を提供している�
 
 ModelSerializer クラスを使ってシリアライザをリファクタリングしてみましょう。snippets/serializers.py というファイルを再度開き、SnippetSerializer クラスを以下のように置き換えます。
 
-```
+```python
 class SnippetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Snippet
@@ -222,7 +222,7 @@ class SnippetSerializer(serializers.ModelSerializer):
 
 シリアライザが持つ素晴らしい特性の一つは、シリアライザのインスタンス内のすべてのフィールドを表示することで検査できるということです。Django シェルを python manage.py シェルで開き、以下のようにしてみてください。
 
-``` 
+```python
 from snippets.serializers import SnippetSerializer
 serializer = SnippetSerializer()
 print(repr(serializer))
@@ -246,7 +246,7 @@ print(repr(serializer))
 
 snippets/views.py ファイルを編集し、以下を追加します。
 
-``` 
+```python
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -256,7 +256,7 @@ from snippets.serializers import SnippetSerializer
 
 APIのルートは、既存のスニペットをすべてリストアップしたり、新しいスニペットを作成したりするビューになる予定です。
 
-```
+```python
 @csrf_exempt
 def snippet_list(request):
     """
@@ -280,7 +280,7 @@ CSRF トークンを持たないクライアントからこのビューに POST 
 
 また、個々のスニペットに対応し、スニペットを取得、更新、削除するために使用できるビューも必要です。
 
-``` 
+```python
 @csrf_exempt
 def snippet_detail(request, pk):
     """
@@ -310,7 +310,7 @@ def snippet_detail(request, pk):
 
 最後に、これらのビューを配線する必要があります。snippets/urls.pyを作成します。
 
-```
+```python
 from django.urls import path
 from snippets import views
 
@@ -322,7 +322,7 @@ urlpatterns = [
 
 また、tutorial/urls.pyファイルのルートurlconfを配線して、スニペットアプリのURLを含める必要があります。
 
-```
+```python
 from django.urls import path, include
 
 urlpatterns = [
@@ -343,7 +343,7 @@ quit()
 
 ...とDjangoの開発サーバーを立ち上げます。
 
-```
+```sh
 python manage.py runserver
 
 Validating models...
@@ -359,7 +359,7 @@ Quit the server with CONTROL-C.
 curl や httpie を使って API をテストすることができます。Httpie は Python で書かれたユーザーフレンドリーな http クライアントです。それをインストールしてみましょう。
 
 httpie をインストールするには pip:
-```
+```sh
  pip install httpie
 ```
 
