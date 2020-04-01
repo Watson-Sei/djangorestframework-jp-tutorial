@@ -422,6 +422,8 @@ API ビューは今のところ、json レスポンスを提供するだけで�
 
 [チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)
 
+[チュートリアル４（認証と権限）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README4.md)
+
 ## 翻訳更新日:2020/3/31
 
 100％の精度で翻訳ができていません。間違っているところがあれば教えてください。

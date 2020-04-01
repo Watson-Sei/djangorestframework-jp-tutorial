@@ -222,3 +222,5 @@ API はクライアントのリクエストに基づいてレスポンスのコ�
 [チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
 
 [チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)
+
+[チュートリアル４（認証と権限）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README4.md)

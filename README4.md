@@ -253,3 +253,5 @@ http -a admin:password123 POST http://127.0.0.1:8000/snippets/ code="print(789)"
 [チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
 
 [チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)
+
+[チュートリアル４（認証と権限）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README4.md)
