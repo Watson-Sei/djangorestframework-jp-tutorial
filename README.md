@@ -418,8 +418,8 @@ API ビューは今のところ、json レスポンスを提供するだけで�
 チュートリアルのパート2では、どのようにして改善を始めることができるかを見ていきます。
 
 
-
-
+[チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
+[チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)
 
 ## 翻訳更新日:2020/3/31
 
