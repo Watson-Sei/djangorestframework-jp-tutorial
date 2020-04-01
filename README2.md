@@ -218,3 +218,7 @@ API はクライアントのリクエストに基づいてレスポンスのコ�
 ## 次は何をするのでしょうか？
 
 チュートリアルパート3では、クラスベースのビューの使用を開始し、ジェネリックビュー(generic views)を使用することで記述するコードの量を減らす方法を見ていきます。
+
+[チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
+
+[チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)

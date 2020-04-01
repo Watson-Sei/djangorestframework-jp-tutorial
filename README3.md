@@ -155,3 +155,7 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 うわー、かなり簡潔ですね。膨大な量を無料で手に入れることができましたし、私たちのコードは良くできていて、クリーンでイディオムな Django のように見えます。
 
 次はチュートリアルのパート 4 に進み、API の認証とパーミッションの扱い方を見ていきます。
+
+[チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
+
+[チュートリアル３（クラスベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README3.md)
