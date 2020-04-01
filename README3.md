@@ -156,7 +156,7 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 
 次はチュートリアルのパート 4 に進み、API の認証とパーミッションの扱い方を見ていきます。
 
-[チュートリアル1（シリアル化）]((https://github.com/Watson-Sei/djangorestframework-jp-tutorial))
+[チュートリアル1（シリアル化）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
 
 [チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README2.md)
 

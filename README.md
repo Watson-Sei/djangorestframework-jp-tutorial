@@ -418,7 +418,7 @@ API ビューは今のところ、json レスポンスを提供するだけで�
 チュートリアルのパート2では、どのようにして改善を始めることができるかを見ていきます。
 
 
-[チュートリアル1（シリアル化）]((https://github.com/Watson-Sei/djangorestframework-jp-tutorial))
+[チュートリアル1（シリアル化）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
 
 [チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README2.md)
 

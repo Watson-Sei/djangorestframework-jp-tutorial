@@ -250,7 +250,7 @@ http -a admin:password123 POST http://127.0.0.1:8000/snippets/ code="print(789)"
 
 チュートリアルのパート5では、ハイライトされたスニペットのHTMLエンドポイントを作成することですべてを結びつけ、システム内のリレーションシップにハイパーリンクを使用することでAPIのまとまりを向上させる方法を見ていきます。
 
-[チュートリアル1（シリアル化）]((https://github.com/Watson-Sei/djangorestframework-jp-tutorial))
+[チュートリアル1（シリアル化）](https://github.com/Watson-Sei/djangorestframework-jp-tutorial)
 
 [チュートリアル２（関数ベースView)](https://github.com/Watson-Sei/djangorestframework-jp-tutorial/blob/master/README2.md)
 
