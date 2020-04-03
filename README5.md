@@ -74,11 +74,11 @@ RESTフレームワークはこれらのスタイルをすべてサポートし�
 
 この場合、エンティティ間のハイパーリンクスタイルを使用したいと思います。そのために、既存の `ModelSerializer` の代わりに `HyperlinkedModelSerializer` を拡張するようシリアライザを変更します。
 
-HyperlinkedModelSerializer`には、`ModelSerializer`との以下の違いがある。
+`HyperlinkedModelSerializer`には、`ModelSerializer`との以下の違いがある。
 
 - デフォルトでは `id` フィールドを含まない。
 
-- HyperlinkedIdentityField`を用いて `url` フィールドを含む。
+- `HyperlinkedIdentityField`を用いて `url` フィールドを含む。
 
 - リレーションシップは `PrimaryKeyRelatedField` の代わりに `HyperlinkedRelatedField` を使う。
 
